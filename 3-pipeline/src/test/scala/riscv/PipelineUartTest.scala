@@ -180,12 +180,12 @@ class PipelineUartTest extends AnyFlatSpec with ChiselScalatestTester {
         // Check completion
         c.io.mem_debug_read_address.poke(0x100.U)
         c.clock.step()
-        c.io.mem_debug_read_data.expect(0xcafef00dL.U)  // DONE_FLAG
+        c.io.mem_debug_read_data.expect(0xcafef00dL.U) // DONE_FLAG
 
         // Check all tests passed: TX + Multi-byte RX + Binary RX + Timeout RX
         c.io.mem_debug_read_address.poke(0x104.U)
         c.clock.step()
-        c.io.mem_debug_read_data.expect(0xF.U)  // 0b1111 = all 4 tests passed
+        c.io.mem_debug_read_data.expect(0xf.U) // 0b1111 = all 4 tests passed
       }
     }
   }
